@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernanda Mulya — Data Analyst & Web Developer</title>
+<meta name="description" content="Portofolio Muhammad Fernanda Mulya Putra — Analis Data & Web Developer dari Kediri, Jawa Timur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        base: '#0d1117',
+        surface: '#11161d',
+        card: 'rgba(22, 27, 34, 0.6)',
+        line: '#2b333d',
+        accent: '#10b981',
+        accent2: '#14b8a6',
+        muted: '#9aa7b4'
+      },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'sans-serif']
+      },
+      boxShadow: {
+        glow: '0 0 0 1px rgba(16,185,129,.25), 0 8px 30px rgba(16,185,129,.08)'
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0d1117; }
+  ::selection { background: rgba(16,185,129,.35); color: #e6edf3; }
+  .glass {
+    background: rgba(22, 27, 34, 0.55);
+    border: 1px solid #2b333d;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .card-hover { transition: transform .25s ease-out, border-color .25s ease-out, box-shadow .25s ease-out; }
+  .card-hover:hover { transform: translateY(-4px); border-color: rgba(16,185,129,.45); box-shadow: 0 12px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(16,185,129,.15); }
+  .grad-text {
+    background: linear-gradient(92deg, #34d399 0%, #2dd4bf 55%, #5eead4 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .reveal { opacity: 0; transform: translateY(18px) scale(.98); transition: opacity .5s ease-out, transform .5s ease-out; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  .nav-link { position: relative; transition: color .2s ease-out; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0;
+    background: #10b981; border-radius: 2px; transition: width .25s ease-out;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: #e6edf3; }
+  .dashed-card { border: 1.5px dashed #3a434e; transition: border-color .25s ease-out, background .25s ease-out; }
+  .dashed-card:hover { border-color: rgba(16,185,129,.5); background: rgba(16,185,129,.04); }
+  :focus-visible { outline: 2px solid #14b8a6; outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .card-hover, .card-hover:hover { transition: none; transform: none; }
+  }
+</style>
+</head>
+<body class="bg-base text-slate-200 font-sans antialiased min-h-[100dvh]">
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-colors duration-300">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between gap-4 px-5 md:px-8 h-16" aria-label="Navigasi utama">
+    <a href="#beranda" class="font-display font-bold text-lg tracking-tight text-slate-100 shrink-0">
+      PORTOFOLIO<span class="text-accent">
+    </a>
+    <ul class="hidden lg:flex items-center gap-7 text-sm text-muted">
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#beranda">Beranda</a></li>
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#tentang">Tentang</a></li>
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#proyek">Proyek</a></li>
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#keahlian">Keahlian</a></li>
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#sertifikasi">Sertifikasi</a></li>
+      <li><a class="nav-link hover:text-slate-100 py-2" href="#kontak">Kontak</a></li>
+    </ul>
+    <div class="flex items-center gap-3">
+      <a href="#kontak" class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-[#06281d] transition hover:bg-accent2 focus-visible:bg-accent2 min-h-[44px]">
+        Hubungi Saya
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <button id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Buka menu navigasi"
+        class="lg:hidden inline-flex items-center justify-center rounded-lg border border-line p-2.5 text-slate-300 hover:border-accent/50 hover:text-accent transition min-h-[44px] min-w-[44px]">
+        <svg id="iconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="iconClose" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </nav>
+  <!-- Menu mobile -->
+  <div id="mobileMenu" class="hidden lg:hidden glass border-x-0 border-t-0">
+    <ul class="px-5 py-4 space-y-1 text-sm">
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#beranda">Beranda</a></li>
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#tentang">Tentang</a></li>
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#proyek">Proyek</a></li>
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#keahlian">Keahlian</a></li>
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#sertifikasi">Sertifikasi</a></li>
+      <li><a class="mobile-link block rounded-lg px-3 py-3 text-slate-300 hover:bg-white/5 hover:text-accent transition" href="#kontak">Kontak</a></li>
+      <li class="pt-2 sm:hidden">
+        <a class="mobile-link flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 font-semibold text-[#06281d]" href="#kontak">Hubungi Saya</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section id="beranda" class="relative overflow-hidden scroll-mt-24">
+  <div class="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-accent/10 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute top-64 -left-40 h-80 w-80 rounded-full bg-accent2/10 blur-3xl" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-5 md:px-8 pt-32 pb-20 md:pt-40 md:pb-28 grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+    <!-- Kolom kiri -->
+    <div class="reveal">
+      <p class="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 text-xs font-medium text-muted">
+        <span class="h-2 w-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+        Terbuka untuk peluang kolaborasi
+      </p>
+      <h1 class="mt-6 font-display font-extrabold tracking-tight text-4xl md:text-5xl lg:text-[3.4rem] leading-[1.12] text-slate-100">
+        Muhammad Fernanda<br>Mulya <span class="grad-text">Putra</span>
+      </h1>
+      <p class="mt-4 font-display text-lg md:text-xl font-semibold text-accent">Data Analyst &amp; Web Developer</p>
+      <p class="mt-5 max-w-xl text-justify text-base md:text-lg leading-relaxed text-muted">
+        Lulusan S1 Teknik Informatika Universitas Nusantara PGRI Kediri dengan IPK 3.61. Berpengalaman dalam pengembangan web, pemeriksaan data internal, pemrosesan citra digital, dan pemodelan Deep Learning. Siap memberikan solusi berbasis teknologi melalui pendekatan analitis dan sistematis.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="#proyek" class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-semibold text-[#06281d] transition hover:bg-accent2 hover:shadow-glow min-h-[44px]">
+          Lihat Proyek
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <a href="#kontak" class="inline-flex items-center justify-center gap-2 rounded-xl border border-line px-6 py-3.5 font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent min-h-[44px]">
+          Hubungi Saya
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
+        <span><strong class="text-slate-100 font-display">3+</strong> Proyek Unggulan</span>
+        <span><strong class="text-slate-100 font-display">3.61</strong> IPK S1 Informatika</span>
+        <span><strong class="text-slate-100 font-display">3</strong> Sertifikasi</span>
+      </div>
+    </div>
+
+    <!-- Kolom kanan: frame foto profil -->
+    <div class="reveal flex justify-center lg:justify-end">
+      <div class="relative w-full max-w-xs md:max-w-sm">
+        <div class="absolute -inset-3 rounded-3xl bg-gradient-to-br from-accent/25 via-transparent to-accent2/20 blur-xl" aria-hidden="true"></div>
+        <div id="photoFrame" class="relative glass rounded-3xl aspect-[4/5] flex flex-col items-center justify-center gap-4 overflow-hidden">
+          <img src="./foto-profil.jpg" alt="Foto profil Muhammad Fernanda Mulya Putra" class="absolute inset-0 z-10 h-full w-full object-cover" style="object-position: center 35%">
+          <div id="photoPlaceholder" class="flex flex-col items-center gap-4 px-6 text-center">
+            <div class="flex h-20 w-20 items-center justify-center rounded-full border border-line bg-white/5 text-muted" aria-hidden="true">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-3.4 4.8-5 8-5s6.2 1.6 8 5"/></svg>
+            </div>
+            <p class="font-display font-semibold text-slate-200">Foto Profil</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TENTANG ============ -->
+<section id="tentang" class="scroll-mt-24 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Tentang Saya</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Fondasi Teknologi, <span class="grad-text">Perspektif Analitis</span>
+      </h2>
+      <p class="mt-5 text-justify text-muted leading-relaxed">
+        Saya Muhammad Fernanda Mulya Putra, lulusan S1 Teknik Informatika dari Universitas Nusantara PGRI Kediri dengan IPK 3,61. Memiliki keahlian dalam pengembangan web, pemeriksaan data, pengolahan citra digital (Image Processing), serta pemodelan Deep Learning. Berpengalaman sebagai Web Developer di UMKM dan Staff Pemeriksa Internal, serta terbiasa bekerja secara teliti, sistematis, dan berorientasi pada target. Didukung kemampuan pemecahan masalah (problem solving) dan komunikasi yang baik, saya siap berkontribusi secara aktif dalam proyek berbasis teknologi dan analisis data untuk mendukung pencapaian tujuan industri.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Kartu Pendidikan -->
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v5"/></svg>
+          </span>
+          <h3 class="font-display font-bold text-slate-100">Pendidikan</h3>
+        </div>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex justify-between gap-3 border-b border-line/60 pb-3">
+            <span class="text-muted">Gelar</span><span class="text-right font-medium text-slate-200">S1 Teknik Informatika</span>
+          </li>
+          <li class="flex justify-between gap-3 border-b border-line/60 pb-3">
+            <span class="text-muted">Universitas</span><span class="text-right font-medium text-slate-200">UNP Kediri</span>
+          </li>
+          <li class="flex justify-between gap-3">
+            <span class="text-muted">IPK</span>
+            <span class="rounded-md bg-accent/15 px-2.5 py-0.5 font-display font-bold text-accent">3.61 / 4.00</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Kartu Pengalaman -->
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+          </span>
+          <h3 class="font-display font-bold text-slate-100">Pengalaman Kerja</h3>
+        </div>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li class="border-l-2 border-accent/50 pl-4">
+            <p class="font-medium text-slate-200">Staf Pemeriksa Internal</p>
+            <p class="text-muted">Saxo Cell — audit &amp; verifikasi operasional</p>
+            <details class="mt-3">
+              <summary class="cursor-pointer text-xs font-semibold text-accent hover:text-accent2">Lihat detail</summary>
+              <ul class="mt-3 list-disc space-y-2 pl-4 text-xs leading-relaxed text-muted">
+                <li>Merekonsiliasi laporan penjualan harian dengan catatan stok secara terperinci.</li>
+                <li>Memverifikasi keabsahan transaksi melalui nota, mutasi rekening, percakapan, dan konfirmasi langsung ke pembeli.</li>
+                <li>Menginput dan mendokumentasikan hasil pemeriksaan transaksi ke dalam sistem internal perusahaan secara akurat dan rahasia.</li>
+              </ul>
+            </details>
+          </li>
+          <li class="border-l-2 border-accent/50 pl-4">
+            <p class="font-medium text-slate-200">Web Developer</p>
+            <p class="text-muted">Proyek UMKM — pengembangan website bisnis lokal</p>
+            <details class="mt-3">
+              <summary class="cursor-pointer text-xs font-semibold text-accent hover:text-accent2">Lihat detail</summary>
+              <ul class="mt-3 list-disc space-y-2 pl-4 text-xs leading-relaxed text-muted">
+                <li>Mengembangkan dan menyesuaikan sistem berbasis web sesuai kebutuhan pengguna.</li>
+                <li>Melakukan pengecekan fungsi sistem untuk memastikan pekerjaan berjalan sesuai kebutuhan.</li>
+                <li>Mengidentifikasi dan menyelesaikan permasalahan yang ditemukan selama proses pekerjaan.</li>
+                <li>Melakukan dokumentasi pekerjaan dan berkoordinasi dalam penyelesaian tugas.</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Kartu Alamat -->
+      <article class="reveal glass card-hover rounded-2xl p-6 md:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3 class="font-display font-bold text-slate-100">Alamat</h3>
+        </div>
+        <p class="mt-5 text-sm text-muted leading-relaxed">
+          Berdomisili di <span class="font-medium text-slate-200">Kediri, Jawa Timur</span>, Indonesia.
+          Terbuka untuk kerja remote maupun kolaborasi lintas kota.
+        </p>
+        <p class="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+          Available for work
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROYEK (BENTO GRID) ============ -->
+<section id="proyek" class="scroll-mt-24 border-t border-line/60 bg-surface/40">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Project Showcase</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Eksplorasi, <span class="grad-text">Dibangun Menjadi Solusi</span>
+      </h2>
+      <p class="mt-5 text-muted leading-relaxed">
+        Kumpulan proyek dari riset machine learning hingga pengembangan web masing-masing
+        lahir dari masalah nyata dan diselesaikan dengan pendekatan terstruktur.
+      </p>
+    </div>
+
+    <div class="mt-10 divide-y divide-line border-y border-line">
+      <article class="reveal grid gap-5 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">01 · Deep Learning / Computer Vision</p>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-slate-100">Klasifikasi Penyakit Daun Tebu Menggunakan Convolutional Neural Network (CNN)</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">Proyek penelitian tugas akhir untuk mendeteksi dan mengklasifikasikan penyakit daun tebu menggunakan computer vision dan transfer learning.</p>
+          <p class="mt-3 text-xs text-muted">Python · TensorFlow/Keras · MobileNetV2 · OpenCV</p>
+        </div>
+        <button type="button" data-project-detail="sugarcane" class="inline-flex min-h-[44px] items-center gap-2 self-start rounded-lg border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent md:self-center">
+          Detail
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="reveal grid gap-5 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">02 · Deep Learning / Email Security</p>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-slate-100">Sistem Penyaringan Spam Email Menggunakan Long Short-Term Memory (LSTM)</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">Sistem web Streamlit terintegrasi IMAP untuk memantau email masuk dan mengklasifikasikannya sebagai spam atau non-spam secara otomatis.</p>
+          <p class="mt-3 text-xs text-muted">Python · Streamlit · BiLSTM · TensorFlow/Keras · IMAP</p>
+        </div>
+        <button type="button" data-project-detail="spam" class="inline-flex min-h-[44px] items-center gap-2 self-start rounded-lg border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent md:self-center">
+          Detail
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="reveal grid gap-5 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">03 · Web Development / Digitalisasi UMKM</p>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-slate-100">Pengembangan Website Profil dan Sistem Informasi UMKM</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">Website yang dirancang dan dikembangkan secara mandiri untuk menampilkan profil usaha, katalog produk, dan kanal komunikasi pelanggan secara online.</p>
+          <p class="mt-3 text-xs text-muted">HTML · CSS · JavaScript · Tailwind CSS · Canva</p>
+        </div>
+        <button type="button" data-project-detail="umkm" class="inline-flex min-h-[44px] items-center gap-2 self-start rounded-lg border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent md:self-center">
+          Detail
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="reveal grid gap-5 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">04 · Natural Language Processing</p>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-slate-100">Analisis Sentimen Ulasan Pengguna Aplikasi eFootball Menggunakan TF-IDF dan Naive Bayes</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">Aplikasi Streamlit untuk mengklasifikasikan ulasan pengguna eFootball menjadi sentimen positif atau negatif, sekaligus menampilkan tahapan pemrosesan teks NLP.</p>
+          <p class="mt-3 text-xs text-muted">Python · Streamlit · TF-IDF · Multinomial Naive Bayes · Sastrawi</p>
+        </div>
+        <button type="button" data-project-detail="sentiment" class="inline-flex min-h-[44px] items-center gap-2 self-start rounded-lg border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent md:self-center">
+          Detail
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </article>
+
+      <article class="reveal grid gap-5 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-accent">05 · Natural Language Processing</p>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-slate-100">Chatbot Berbasis TF-IDF dan Cosine Similarity</h3>
+          <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">Chatbot interaktif berbasis terminal yang mencocokkan pertanyaan pengguna dengan basis pengetahuan untuk memberikan jawaban yang relevan.</p>
+          <p class="mt-3 text-xs text-muted">Python · Scikit-learn · TF-IDF · Cosine Similarity · NumPy</p>
+        </div>
+        <button type="button" data-project-detail="chatbot" class="inline-flex min-h-[44px] items-center gap-2 self-start rounded-lg border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-accent/60 hover:text-accent md:self-center">
+          Detail
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECH STACK ============ -->
+<section id="keahlian" class="scroll-mt-24 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Tech Stack</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Perangkat di <span class="grad-text">Balik Proses</span>
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <h3 class="font-display font-bold text-slate-100 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+          </span>
+          Data &amp; Pemrograman
+        </h3>
+        <ul class="mt-5 space-y-2.5 text-sm text-muted">
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Python untuk logika backend, pemrosesan data, dan skrip otomatisasi</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Data cleaning, preprocessing, dan manipulasi data</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Pandas · NumPy</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Analisis data terstruktur dan dataset berdimensi tinggi</span></li>
+        </ul>
+      </article>
+
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <h3 class="font-display font-bold text-slate-100 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 7.5 10.5 10M16 7.5 13.5 10M10.5 14 8 16.5M13.5 14 16 16.5"/></svg>
+          </span>
+          Machine Learning &amp; Deep Learning (AI)
+        </h3>
+        <ul class="mt-5 space-y-2.5 text-sm text-muted">
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>CNN dan transfer learning dengan MobileNetV2</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>LSTM untuk sequence modeling · TF-IDF · Sastrawi</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>TensorFlow · Keras · Confusion Matrix · Early Stopping</span></li>
+        </ul>
+      </article>
+
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <h3 class="font-display font-bold text-slate-100 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M13 5l-2 14"/></svg>
+          </span>
+          Pengembangan Web &amp; Integrasi
+        </h3>
+        <ul class="mt-5 space-y-2.5 text-sm text-muted">
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>HTML5 · CSS3 · JavaScript · Tailwind CSS</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Desain responsif dengan pendekatan mobile-first</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Streamlit untuk aplikasi berbasis Python yang interaktif</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Integrasi protokol IMAP</span></li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>Git untuk manajemen kode</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERTIFIKASI ============ -->
+<section id="sertifikasi" class="scroll-mt-24 border-t border-line/60 bg-surface/40">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Sertifikasi</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Pembelajaran <span class="grad-text">Berkelanjutan</span>
+      </h2>
+      <p class="mt-5 text-muted leading-relaxed">
+        Sertifikasi formal sebagai bukti komitmen terhadap pengembangan kompetensi berkelanjutan.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg>
+          </span>
+          <span class="rounded-md border border-line bg-white/5 px-2 py-1 text-[11px] font-medium text-muted">Perkantoran</span>
+        </div>
+        <h3 class="mt-4 font-display text-lg font-bold text-slate-100">Applied Microsoft Office</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">
+          Sertifikasi kompetensi aplikasi perkantoran: pengolahan dokumen, spreadsheet, dan presentasi tingkat lanjut.
+        </p>
+        <button type="button" class="certificate-trigger mt-5 w-full rounded-lg border border-line bg-base/60 text-left transition hover:border-accent/50 hover:bg-white/5" aria-label="Lihat sertifikat Applied Microsoft Office">
+          <span class="flex items-center gap-3 p-4">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-sm font-medium text-slate-200">sertifikat-office.png</span>
+              <span class="mt-1 block text-xs text-muted">Klik untuk melihat gambar</span>
+            </span>
+          </span>
+          <img src="images/office.png" alt="Sertifikat Applied Microsoft Office" class="hidden">
+        </button>
+      </article>
+
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v12H5.5L4 18.5V5Z"/><path d="M8 9h8M8 12h5"/></svg>
+          </span>
+          <span class="rounded-md border border-line bg-white/5 px-2 py-1 text-[11px] font-medium text-muted">Bahasa</span>
+        </div>
+        <h3 class="mt-4 font-display text-lg font-bold text-slate-100">TOEFL</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">
+          Sertifikasi kecakapan Bahasa Inggris — listening, structure, dan reading comprehension.
+        </p>
+        <button type="button" class="certificate-trigger mt-5 w-full rounded-lg border border-line bg-base/60 text-left transition hover:border-accent/50 hover:bg-white/5" aria-label="Lihat sertifikat TOEFL">
+          <span class="flex items-center gap-3 p-4">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-sm font-medium text-slate-200">sertifikat-toefl.jpg</span>
+              <span class="mt-1 block text-xs text-muted">Klik untuk melihat gambar</span>
+            </span>
+          </span>
+          <img src="images/toefl.jpg" alt="Sertifikat TOEFL" class="hidden">
+        </button>
+      </article>
+
+      <article class="reveal glass card-hover rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m9 9-2 2.5L9 14M15 9l2 2.5-2 2.5"/></svg>
+          </span>
+          <span class="rounded-md border border-line bg-white/5 px-2 py-1 text-[11px] font-medium text-muted">Web</span>
+        </div>
+        <h3 class="mt-4 font-display text-lg font-bold text-slate-100">Frontend Fundamentals</h3>
+        <p class="mt-2 text-sm text-muted leading-relaxed">
+          Dasar-dasar pengembangan frontend: HTML, CSS, JavaScript, dan prinsip desain antarmuka responsif.
+        </p>
+        <button type="button" class="certificate-trigger mt-5 w-full rounded-lg border border-line bg-base/60 text-left transition hover:border-accent/50 hover:bg-white/5" aria-label="Lihat sertifikat Frontend Fundamentals">
+          <span class="flex items-center gap-3 p-4">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+            </span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-sm font-medium text-slate-200">sertifikat-frontend.jpg</span>
+              <span class="mt-1 block text-xs text-muted">Klik untuk melihat gambar</span>
+            </span>
+          </span>
+          <img src="images/frontend.jpg" alt="Sertifikat Frontend Fundamentals" class="hidden">
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORGANISASI ============ -->
+<section id="organisasi" class="scroll-mt-24 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Organisasi Masyarakat</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Ruang <span class="grad-text">Kolaborasi</span>
+      </h2>
+      <p class="mt-5 text-muted leading-relaxed">
+        Aktif berkontribusi dalam organisasi masyarakat melalui koordinasi, kerja sama tim,
+        dan pelaksanaan kegiatan sosial.
+      </p>
+    </div>
+
+    <div class="mt-12 max-w-3xl">
+      <article class="reveal glass card-hover rounded-2xl p-6 md:p-7">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1.2-3 3.7-4.5 6.5-4.5s5.3 1.5 6.5 4.5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 15.6c2.6.2 4.6 1.6 5.5 4.4"/></svg>
+          </span>
+          <h3 class="font-display font-bold text-slate-100">Karang Taruna</h3>
+        </div>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li class="border-l-2 border-accent/50 pl-4">
+            <p class="font-medium text-slate-200">Anggota Divisi / Pengurus</p>
+            <p class="text-muted">September 2025 – Sekarang</p>
+            <details class="mt-3">
+              <summary class="cursor-pointer text-xs font-semibold text-accent hover:text-accent2">Lihat detail</summary>
+              <ul class="mt-3 list-disc space-y-2 pl-4 text-xs leading-relaxed text-muted">
+                <li>Berkoordinasi dengan sesama anggota untuk merencanakan dan menjalankan program kerja serta kegiatan sosial kemasyarakatan.</li>
+                <li>Mendukung pelaksanaan kegiatan sesuai pembagian tugas dan tanggung jawab.</li>
+                <li>Membangun komunikasi dan kerja sama tim agar kegiatan berjalan lancar dan tepat sasaran.</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" class="scroll-mt-24 border-t border-line/60 bg-surface/40">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-16">
+    <!-- Info kontak -->
+    <div class="reveal max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Kontak</p>
+      <h2 class="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
+        Mari <span class="grad-text">Terhubung</span>
+      </h2>
+      <p class="mt-5 text-muted leading-relaxed max-w-md">
+        Punya ide proyek, peluang kerja, atau sekadar ingin berdiskusi soal data dan web?
+        Jangan ragu untuk menghubungi saya selalu terbuka untuk percakapan baru.
+      </p>
+
+      <ul class="mt-8 space-y-4">
+        <li>
+          <a href="https://wa.me/6285956456685" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl glass card-hover p-4 min-h-[44px]">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.3A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 9.5c.4 2.2 2.1 3.9 4.3 4.3"/></svg>
+            </span>
+            <span>
+              <span class="block text-xs text-muted">WhatsApp</span>
+              <span class="block font-medium text-slate-200 group-hover:text-accent transition">0859-5645-6685</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:muhammadfernanda2711@gmail.com" class="group flex items-center gap-4 rounded-2xl glass card-hover p-4 min-h-[44px]">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
+            <span>
+              <span class="block text-xs text-muted">Email</span>
+              <span class="block font-medium text-slate-200 group-hover:text-accent transition">muhammadfernanda2711@gmail.com</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/muhammad-fernanda-mulya-putra-864b98429/" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl glass card-hover p-4 min-h-[44px]">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.24 8.31h4.52V23H.24V8.31ZM8.34 8.31h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.52v-7.1c0-1.7-.03-3.88-2.36-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31Z"/></svg>
+            </span>
+            <span>
+              <span class="block text-xs text-muted">LinkedIn</span>
+              <span class="block font-medium text-slate-200 group-hover:text-accent transition">Muhammad Fernanda Mulya Putra</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Fernanda-27" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl glass card-hover p-4 min-h-[44px]">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.14c0 .3.21.67.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            </span>
+            <span>
+              <span class="block text-xs text-muted">GitHub</span>
+              <span class="block font-medium text-slate-200 group-hover:text-accent transition">github.com/Fernanda-27</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-10">
+    <p class="text-sm text-muted text-center">
+      &copy; <span id="year">2026</span> Muhammad Fernanda Mulya Putra. Hak cipta dilindungi.
+    </p>
+  </div>
+</footer>
+
+<!-- Toast notifikasi -->
+<div id="toast" class="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300" role="status" aria-live="polite">
+  <div class="flex items-center gap-2.5 rounded-xl border border-accent/40 bg-[#0f1f19] px-5 py-3 text-sm font-medium text-accent shadow-glow">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+    <span id="toastMsg">Berhasil</span>
+  </div>
+</div>
+
+<dialog id="certificateDialog" class="w-[min(94vw,1100px)] max-h-[92vh] overflow-y-auto rounded-xl border border-line bg-base p-4 text-slate-200 shadow-2xl backdrop:bg-black/80">
+  <div class="mb-3 flex items-center justify-between gap-4">
+    <h3 id="certificateDialogTitle" class="font-display font-semibold"></h3>
+    <button id="closeCertificateDialog" type="button" class="rounded-lg border border-line p-2 text-slate-300 transition hover:border-accent/50 hover:text-accent" aria-label="Tutup pratinjau sertifikat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <img id="certificateDialogImage" alt="" class="mx-auto max-h-[78vh] w-full object-contain">
+</dialog>
+
+<dialog id="projectDetailDialog" class="h-[min(94vh,900px)] max-h-[94vh] w-[min(96vw,1320px)] max-w-none overflow-y-auto rounded-xl border border-line bg-base p-0 text-slate-200 shadow-2xl backdrop:bg-black/80">
+  <div class="min-h-full p-5 md:p-8 lg:p-10">
+    <button id="closeProjectDetail" type="button" class="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-line bg-surface px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-accent/50 hover:text-accent">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6M9 12h12"/></svg>
+      Kembali
+    </button>
+
+    <div class="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-10">
+      <div>
+        <h2 id="projectDetailTitle" class="font-display text-2xl font-extrabold leading-tight text-slate-100 md:text-4xl"></h2>
+        <p id="projectDetailCategory" class="mt-3 text-sm text-muted"></p>
+
+        <section class="mt-7">
+          <h3 class="font-display text-lg font-bold text-slate-100">Deskripsi</h3>
+          <p id="projectDetailDescription" class="mt-2 text-sm leading-relaxed text-muted"></p>
+        </section>
+
+        <section class="mt-6">
+          <h3 class="font-display text-lg font-bold text-slate-100">Ruang Lingkup</h3>
+          <ul id="projectDetailScope" class="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted"></ul>
+        </section>
+      </div>
+
+      <div>
+        <div id="projectImageFrame" class="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-surface">
+          <img id="projectDetailImage" alt="" class="hidden h-full w-full object-contain">
+          <div id="projectImageFallback" class="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-muted" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <p class="text-sm text-muted">Tambahkan gambar proyek pada file:</p>
+            <code id="projectImagePath" class="text-xs text-accent"></code>
+          </div>
+          <button id="projectImagePrevious" type="button" aria-label="Gambar sebelumnya" class="hidden absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-base/80 text-slate-100 shadow transition hover:bg-base">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button id="projectImageNext" type="button" aria-label="Gambar berikutnya" class="hidden absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-base/80 text-slate-100 shadow transition hover:bg-base">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <p id="projectImageCounter" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-base/80 px-3 py-1 text-xs font-medium text-slate-100" aria-live="polite"></p>
+        </div>
+        <p id="projectImageHint" class="hidden mt-2 text-center text-xs text-muted">Geser foto ke kanan atau kiri untuk melihat gambar lainnya.</p>
+
+        <section class="mt-6">
+          <h3 class="font-display text-lg font-bold text-slate-100">Tools &amp; Teknologi</h3>
+          <div id="projectDetailTools" class="mt-3 flex flex-wrap gap-2"></div>
+        </section>
+
+        <section class="mt-6">
+          <h3 class="font-display text-lg font-bold text-slate-100">Link Project</h3>
+          <a id="projectDetailLink" class="mt-3 hidden min-h-[44px] items-center rounded-lg border border-line px-4 py-3 text-sm text-slate-200 transition hover:border-accent/50 hover:text-accent" target="_blank" rel="noopener"></a>
+          <p id="projectDetailLinkUnavailable" class="mt-2 text-sm text-muted">Link proyek belum ditambahkan.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Tahun footer ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Toast helper ---------- */
+  var toast = document.getElementById('toast');
+  var toastMsg = document.getElementById('toastMsg');
+  var toastTimer = null;
+  function showToast(msg) {
+    toastMsg.textContent = msg;
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.classList.add('opacity-0', 'translate-y-4');
+    }, 3200);
+  }
+
+  /* ---------- Navbar: efek scroll ---------- */
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (window.scrollY > 24) {
+      navbar.classList.add('glass', 'shadow-lg');
+    } else {
+      navbar.classList.remove('glass', 'shadow-lg');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Menu mobile ---------- */
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var iconOpen = document.getElementById('iconOpen');
+  var iconClose = document.getElementById('iconClose');
+
+  function setMenu(open) {
+    mobileMenu.classList.toggle('hidden', !open);
+    iconOpen.classList.toggle('hidden', open);
+    iconClose.classList.toggle('hidden', !open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+  }
+  menuBtn.addEventListener('click', function () {
+    setMenu(mobileMenu.classList.contains('hidden'));
+  });
+  mobileMenu.querySelectorAll('.mobile-link').forEach(function (link) {
+    link.addEventListener('click', function () { setMenu(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) setMenu(false);
+  });
+
+  /* ---------- Scrollspy: tandai menu aktif ---------- */
+  var sections = ['beranda', 'tentang', 'proyek', 'keahlian', 'sertifikasi', 'kontak']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navLinks = document.querySelectorAll('.nav-link');
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function (l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(function (s) { spy.observe(s); });
+
+  /* ---------- Animasi reveal saat scroll ---------- */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+
+  /* ---------- Detail proyek ---------- */
+  var projectDetails = {
+    sugarcane: {
+      title: 'Klasifikasi Penyakit Daun Tebu Menggunakan Convolutional Neural Network (CNN)',
+      category: 'Deep Learning · Computer Vision',
+      description: 'Proyek penelitian tugas akhir yang menerapkan kecerdasan buatan dan computer vision untuk mendeteksi serta mengklasifikasikan kondisi daun tebu secara otomatis menggunakan CNN berbasis MobileNetV2.',
+      scope: [
+        'Mengumpulkan dataset citra daun tebu dengan kelas sehat, red rot, karat, dan mosaik kuning.',
+        'Melakukan resizing dan normalisasi piksel pada citra sebelum pemodelan.',
+        'Menggunakan transfer learning dengan arsitektur CNN MobileNetV2 untuk mengekstraksi fitur visual penyakit daun.',
+        'Melatih dan menguji model menggunakan data latih dan data uji.',
+        'Mengevaluasi performa menggunakan akurasi, presisi, recall, F1-score, confusion matrix, dan laporan klasifikasi.'
+      ],
+      tools: ['Python', 'TensorFlow', 'Keras', 'CNN', 'MobileNetV2', 'OpenCV', 'NumPy', 'Pandas', 'Scikit-learn'],
+      images: ['images/haldep.png', 'images/halup.png', 'images/halsil.png'],
+      link: ''
+    },
+    spam: {
+      title: 'Sistem Penyaringan Spam Email Menggunakan Long Short-Term Memory (LSTM)',
+      category: 'Deep Learning · Natural Language Processing · Keamanan Email',
+      description: 'Sistem penelitian dan pengembangan berbasis deep learning untuk mengklasifikasikan email masuk sebagai Spam atau Non-Spam (Ham) secara otomatis. Aplikasi Streamlit terintegrasi dengan protokol IMAP untuk memantau email baru berstatus UNSEEN pada inbox.',
+      scope: [
+        'Melakukan case folding dan membersihkan URL, angka, serta karakter khusus; subjek dan isi email digabung agar konteks tetap utuh.',
+        'Mengubah teks menjadi urutan token dengan Keras Tokenizer (MAX_WORDS = 20000) dan menyamakan panjang sekuens dengan padding (MAX_LEN = 200).',
+        'Membangun dan melatih model Bidirectional LSTM dengan embedding, dropout, dan early stopping.',
+        'Mengintegrasikan model ke aplikasi Streamlit dan menggunakan IMAP untuk memeriksa email baru berstatus UNSEEN.',
+        'Mencapai akurasi 0.99 (99%); precision, recall, dan F1-score sebesar 0.99 pada kelas Spam dan Non-Spam.'
+      ],
+      tools: ['Python', 'Streamlit', 'TensorFlow', 'Keras', 'Bidirectional LSTM', 'Tokenizer', 'Pad Sequences', 'Scikit-learn', 'IMAP'],
+      images: ['images/pengenalan pola.png', 'images/stains.png'],
+      link: ''
+    },
+    umkm: {
+      title: 'Pengembangan Website Profil dan Sistem Informasi UMKM',
+      category: 'Web Development · Digitalisasi UMKM',
+      description: 'Aplikasi web yang dirancang dan dikembangkan secara mandiri untuk mendukung digitalisasi bisnis UMKM. Website menyajikan profil usaha dan katalog produk dengan antarmuka profesional serta membantu meningkatkan visibilitas bisnis secara online.',
+      scope: [
+        'Menganalisis kebutuhan bisnis dan menerjemahkannya menjadi arsitektur informasi serta tata letak halaman yang interaktif dan mudah digunakan.',
+        'Membangun komponen antarmuka frontend yang responsif dan kompatibel di berbagai perangkat.',
+        'Mengintegrasikan halaman profil usaha dan narasi latar belakang bisnis.',
+        'Menyajikan katalog interaktif dengan varian dan detail penawaran produk.',
+        'Menyematkan tautan komunikasi dan akses pemesanan langsung untuk pelanggan.',
+        'Menyiapkan website untuk deployment dan hosting lokal.'
+      ],
+      tools: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Canva', 'UI/UX Layout Planning', 'Web Deployment'],
+      images: [
+        'images/Screenshot 2026-11-03 135955.png',
+        'images/Screenshot 2026-11-03 140015.png',
+        'images/Screenshot 2026-11-03 140039.png'
+      ],
+      link: ''
+    },
+    sentiment: {
+      title: 'Analisis Sentimen Ulasan Pengguna Aplikasi eFootball Menggunakan Metode TF-IDF dan Naive Bayes',
+      category: 'Natural Language Processing · Analisis Sentimen',
+      description: 'Aplikasi web berbasis Python dan Streamlit untuk menganalisis ulasan pengguna eFootball secara real-time, mengklasifikasikan sentimen positif atau negatif, dan memperlihatkan tahapan pemrosesan teks.',
+      scope: [
+        'Membersihkan teks dengan Regex dan melakukan Case Folding.',
+        'Melakukan Tokenizing, Stopword Removal dengan Sastrawi, dan Stemming.',
+        'Mengubah teks menjadi fitur numerik menggunakan TF-IDF.',
+        'Mengklasifikasikan sentimen positif atau negatif menggunakan Multinomial Naive Bayes.',
+        'Menampilkan proses NLP dan hasil prediksi secara transparan di aplikasi Streamlit.'
+      ],
+      tools: ['Python', 'Streamlit', 'Scikit-learn', 'TF-IDF', 'Multinomial Naive Bayes', 'Sastrawi', 'Pandas', 'Joblib'],
+      images: ['images/analisis sentimen 1.png', 'images/analisis sentimen 2.png'],
+      link: ''
+    },
+    chatbot: {
+      title: 'Chatbot Berbasis TF-IDF dan Cosine Similarity',
+      category: 'Natural Language Processing · Information Retrieval',
+      description: 'Chatbot interaktif berbasis terminal yang mencari jawaban dari dataset pertanyaan dan jawaban dengan membandingkan kemiripan teks pertanyaan pengguna.',
+      scope: [
+        'Menyediakan basis pengetahuan berupa pasangan pertanyaan dan jawaban.',
+        'Mengubah pertanyaan menjadi vektor teks menggunakan TfidfVectorizer.',
+        'Menghitung kemiripan menggunakan cosine_similarity untuk memilih jawaban yang paling relevan.',
+        'Menerima pertanyaan secara interaktif di terminal hingga pengguna memasukkan perintah keluar.'
+      ],
+      tools: ['Python', 'Scikit-learn', 'TfidfVectorizer', 'Cosine Similarity', 'NumPy'],
+      images: ['images/chatbot.png'],
+      link: ''
+    }
+  };
+  var projectDetailDialog = document.getElementById('projectDetailDialog');
+  var projectDetailImage = document.getElementById('projectDetailImage');
+  var projectImageFallback = document.getElementById('projectImageFallback');
+  var projectImagePath = document.getElementById('projectImagePath');
+  var projectImageFrame = document.getElementById('projectImageFrame');
+  var projectImagePrevious = document.getElementById('projectImagePrevious');
+  var projectImageNext = document.getElementById('projectImageNext');
+  var projectImageCounter = document.getElementById('projectImageCounter');
+  var projectImageHint = document.getElementById('projectImageHint');
+  var activeProject = null;
+  var activeProjectImage = 0;
+  var projectImageTouchStart = null;
+
+  function renderProjectImage() {
+    var imagePath = activeProject.images[activeProjectImage];
+    projectDetailImage.classList.add('hidden');
+    projectImageFallback.classList.remove('hidden');
+    projectImagePath.textContent = imagePath;
+    projectImagePrevious.classList.toggle('hidden', activeProject.images.length < 2);
+    projectImageNext.classList.toggle('hidden', activeProject.images.length < 2);
+    projectImageCounter.classList.toggle('hidden', activeProject.images.length < 2);
+    projectImageHint.classList.toggle('hidden', activeProject.images.length < 2);
+    projectImageCounter.textContent = (activeProjectImage + 1) + ' / ' + activeProject.images.length;
+    projectDetailImage.alt = activeProject.title + ' - gambar ' + (activeProjectImage + 1);
+    projectDetailImage.onload = function () {
+      projectImageFallback.classList.add('hidden');
+      projectDetailImage.classList.remove('hidden');
+    };
+    projectDetailImage.onerror = function () {
+      projectDetailImage.classList.add('hidden');
+      projectImageFallback.classList.remove('hidden');
+    };
+    projectDetailImage.src = imagePath;
+    if (projectDetailImage.complete && projectDetailImage.naturalWidth > 0) {
+      projectImageFallback.classList.add('hidden');
+      projectDetailImage.classList.remove('hidden');
+    }
+  }
+
+  function changeProjectImage(direction) {
+    activeProjectImage = (activeProjectImage + direction + activeProject.images.length) % activeProject.images.length;
+    renderProjectImage();
+  }
+
+  document.querySelectorAll('[data-project-detail]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeProject = projectDetails[button.getAttribute('data-project-detail')];
+      activeProjectImage = 0;
+      document.getElementById('projectDetailTitle').textContent = activeProject.title;
+      document.getElementById('projectDetailCategory').textContent = activeProject.category;
+      document.getElementById('projectDetailDescription').textContent = activeProject.description;
+
+      var scopeList = document.getElementById('projectDetailScope');
+      scopeList.replaceChildren();
+      activeProject.scope.forEach(function (item) {
+        var listItem = document.createElement('li');
+        listItem.textContent = item;
+        scopeList.appendChild(listItem);
+      });
+
+      var toolsList = document.getElementById('projectDetailTools');
+      toolsList.replaceChildren();
+      activeProject.tools.forEach(function (tool) {
+        var tag = document.createElement('span');
+        tag.className = 'rounded-md border border-line bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300';
+        tag.textContent = tool;
+        toolsList.appendChild(tag);
+      });
+
+      var projectLink = document.getElementById('projectDetailLink');
+      var linkUnavailable = document.getElementById('projectDetailLinkUnavailable');
+      if (activeProject.link) {
+        projectLink.href = activeProject.link;
+        projectLink.textContent = activeProject.link;
+        projectLink.classList.remove('hidden');
+        linkUnavailable.classList.add('hidden');
+      } else {
+        projectLink.classList.add('hidden');
+        linkUnavailable.classList.remove('hidden');
+      }
+
+      renderProjectImage();
+      projectDetailDialog.showModal();
+    });
+  });
+
+  projectImagePrevious.addEventListener('click', function () { changeProjectImage(-1); });
+  projectImageNext.addEventListener('click', function () { changeProjectImage(1); });
+  projectImageFrame.addEventListener('touchstart', function (event) {
+    var touch = event.changedTouches[0];
+    projectImageTouchStart = { x: touch.clientX, y: touch.clientY };
+  }, { passive: true });
+  projectImageFrame.addEventListener('touchend', function (event) {
+    if (!projectImageTouchStart) return;
+    var touch = event.changedTouches[0];
+    var deltaX = touch.clientX - projectImageTouchStart.x;
+    var deltaY = touch.clientY - projectImageTouchStart.y;
+    projectImageTouchStart = null;
+    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    changeProjectImage(deltaX < 0 ? 1 : -1);
+  }, { passive: true });
+  projectDetailDialog.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') changeProjectImage(-1);
+    if (event.key === 'ArrowRight') changeProjectImage(1);
+  });
+  document.getElementById('closeProjectDetail').addEventListener('click', function () {
+    projectDetailDialog.close();
+  });
+  projectDetailDialog.addEventListener('click', function (event) {
+    if (event.target === projectDetailDialog) projectDetailDialog.close();
+  });
+
+  /* ---------- Pratinjau gambar sertifikat ---------- */
+  var certificateDialog = document.getElementById('certificateDialog');
+  var certificateDialogImage = document.getElementById('certificateDialogImage');
+  var certificateDialogTitle = document.getElementById('certificateDialogTitle');
+  document.querySelectorAll('.certificate-trigger').forEach(function (button) {
+    var image = button.querySelector('img');
+
+    button.addEventListener('click', function () {
+      if (!image.naturalWidth) return;
+      certificateDialogTitle.textContent = image.alt;
+      certificateDialogImage.src = image.src;
+      certificateDialogImage.alt = image.alt;
+      certificateDialog.showModal();
+    });
+  });
+
+  document.getElementById('closeCertificateDialog').addEventListener('click', function () {
+    certificateDialog.close();
+  });
+  certificateDialog.addEventListener('click', function (event) {
+    if (event.target === certificateDialog) certificateDialog.close();
+  });
+
+})();
+</script>
+</body>
+</html>
